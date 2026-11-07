@@ -1,1 +1,157 @@
-
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAISER | Fotografie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a0a;color:#eee;font-family:Poppins,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',serif}
+:root{--gold:#d4af37}
+#loader{position:fixed;inset:0;background:#000;display:flex;justify-content:center;align-items:center;z-index:999;transition:opacity 1s}
+#loader span{font-family:'Playfair Display';font-size:3rem;letter-spacing:12px;color:var(--gold);animation:pulse 1.5s infinite}
+@keyframes pulse{50%{opacity:.3;letter-spacing:20px}}
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:22px 6%;z-index:50;transition:.4s}
+nav.scrolled{background:rgba(0,0,0,.85);backdrop-filter:blur(10px);padding:14px 6%}
+nav b{color:var(--gold);letter-spacing:5px;font-size:1.4rem}
+nav a{color:#eee;margin-left:25px;text-decoration:none;font-size:.9rem}
+.slider{position:relative;height:100vh;overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s}
+.slide.active{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover;filter:brightness(.45)}
+.slide.active img{animation:zoom 7s ease-out forwards}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.15)}}
+.hero{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;z-index:2}
+.hero h1{font-size:clamp(3rem,10vw,7rem);letter-spacing:15px;animation:up 1.5s ease}
+.hero p{margin:20px 0 40px;font-size:1.2rem;letter-spacing:3px;animation:up 2s ease}
+@keyframes up{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:none}}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);background:none;border:2px solid #fff;color:#fff;width:55px;height:55px;border-radius:50%;font-size:1.5rem;cursor:pointer;z-index:3}
+.prev{left:25px}.next{right:25px}
+.btn{background:var(--gold);color:#000;padding:16px 40px;border-radius:40px;text-decoration:none;font-weight:500;box-shadow:0 0 25px rgba(212,175,55,.5)}
+section{padding:100px 8%}
+h2{text-align:center;font-size:2.6rem;margin-bottom:15px}
+.sub{text-align:center;color:var(--gold);letter-spacing:4px;font-size:.8rem;margin-bottom:50px}
+.reveal{opacity:0;transform:translateY(60px);transition:1s}
+.reveal.show{opacity:1;transform:none}
+.stats{display:flex;justify-content:space-around;flex-wrap:wrap;gap:30px;background:#111;padding:60px 8%}
+.stat{text-align:center}
+.stat h3{font-size:3rem;color:var(--gold)}
+.filters{text-align:center;margin-bottom:30px}
+.filters button{background:none;border:1px solid var(--gold);color:#eee;padding:8px 22px;margin:5px;border-radius:20px}
+.filters button.on{background:var(--gold);color:#000}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.gallery img{width:100%;height:300px;object-fit:cover;border-radius:8px}
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);display:none;justify-content:center;align-items:center;z-index:100}
+#lightbox img{max-width:90%;max-height:85%}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.videos iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:12px}
+.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
+.price{background:#141414;padding:40px 30px;border-radius:15px;text-align:center;border:1px solid #222}
+.price.top{border:2px solid var(--gold)}
+.price .p{font-size:2.6rem;color:var(--gold);margin:15px 0}
+.price li{list-style:none;margin:10px 0;color:#bbb}
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+.review{background:#141414;padding:30px;border-radius:15px;font-style:italic}
+.review b{display:block;margin-top:15px;color:var(--gold);font-style:normal}
+.calendly-inline-widget{min-width:320px;height:700px}
+.wa{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.8rem;text-decoration:none;z-index:60}
+footer{text-align:center;padding:40px;background:#000;color:#777}
+footer a{color:var(--gold);margin:0 10px;text-decoration:none}
+@media(max-width:700px){nav div{display:none}}
+</style>
+</head>
+<body>
+<div id="loader"><span>KAISER</span></div>
+<nav id="nav"><b>KAISER</b><div><a href="#portfolio">Portfolio</a><a href="#videos">Videos</a><a href="#preise">Preise</a><a href="#buchen">Buchen</a></div></nav>
+<div class="slider">
+  <div class="slide active"><img src="bild1.jpg" alt=""></div>
+  <div class="slide"><img src="bild2.jpg" alt=""></div>
+  <div class="slide"><img src="bild3.jpg" alt=""></div>
+  <div class="hero">
+    <h1>KAISER</h1>
+    <p>MOMENTE, DIE FÜR IMMER BLEIBEN</p>
+    <a href="#buchen" class="btn">Jetzt Termin sichern</a>
+  </div>
+  <button class="arrow prev" onclick="move(-1)">&#10094;</button>
+  <button class="arrow next" onclick="move(1)">&#10095;</button>
+</div>
+<div class="stats reveal">
+  <div class="stat"><h3 class="count" data-n="250">0</h3><p>Hochzeiten</p></div>
+  <div class="stat"><h3 class="count" data-n="120">0</h3><p>Business-Kunden</p></div>
+  <div class="stat"><h3 class="count" data-n="50000">0</h3><p>Fotos</p></div>
+</div>
+<section id="portfolio">
+  <h2 class="reveal">Portfolio</h2>
+  <p class="sub">MEINE ARBEIT</p>
+  <div class="filters">
+    <button class="on" onclick="filter('all',this)">Alle</button>
+    <button onclick="filter('hochzeit',this)">Hochzeit</button>
+    <button onclick="filter('business',this)">Business</button>
+    <button onclick="filter('portrait',this)">Portrait</button>
+  </div>
+  <div class="gallery">
+    <img data-cat="hochzeit" src="hochzeit1.jpg" alt="">
+    <img data-cat="hochzeit" src="hochzeit2.jpg" alt="">
+    <img data-cat="business" src="business1.jpg" alt="">
+    <img data-cat="business" src="business2.jpg" alt="">
+    <img data-cat="portrait" src="portrait1.jpg" alt="">
+    <img data-cat="portrait" src="portrait2.jpg" alt="">
+  </div>
+</section>
+<div id="lightbox" onclick="this.style.display='none'"><img id="lbimg" src="" alt=""></div>
+<section id="videos">
+  <h2 class="reveal">Videos</h2>
+  <p class="sub">HINTER DEN KULISSEN</p>
+  <div class="videos">
+    <iframe src="https://www.youtube.com/embed/VIDEO-ID-1" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/VIDEO-ID-2" allowfullscreen></iframe>
+  </div>
+</section>
+<section id="preise">
+  <h2 class="reveal">Pakete</h2>
+  <p class="sub">FÜR JEDEN MOMENT DAS RICHTIGE</p>
+  <div class="prices">
+    <div class="price"><h3>Portrait</h3><div class="p">ab 149 €</div><ul><li>1 Stunde Shooting</li><li>20 bearbeitete Fotos</li><li>Online-Galerie</li></ul></div>
+    <div class="price top"><h3>Hochzeit</h3><div class="p">ab 990 €</div><ul><li>Ganztägige Begleitung</li><li>400+ bearbeitete Fotos</li><li>Highlight-Video</li></ul></div>
+    <div class="price"><h3>Business</h3><div class="p">ab 299 €</div><ul><li>Fotos für Laden & Social Media</li><li>Nutzungsrechte inklusive</li><li>Schnelle Lieferung</li></ul></div>
+  </div>
+</section>
+<section>
+  <h2 class="reveal">Kundenstimmen</h2>
+  <p class="sub">DAS SAGEN MEINE KUNDEN</p>
+  <div class="reviews">
+    <div class="review">„Die schönsten Bilder unseres Lebens!“<b>★★★★★ Sarah & Ali</b></div>
+    <div class="review">„Seit den neuen Fotos läuft unser Laden viel besser.“<b>★★★★★ Café Luna</b></div>
+    <div class="review">„Super entspannt und sehr professionell!“<b>★★★★★ Mehmet K.</b></div>
+  </div>
+</section>
+<section id="buchen">
+  <h2 class="reveal">Termin buchen</h2>
+  <p class="sub">WÄHLE DEINEN WUNSCHTERMIN</p>
+  <div class="calendly-inline-widget" data-url="https://calendly.com/KAISER-NAME"></div>
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</section>
+<a class="wa" href="https://wa.me/49DEINENUMMER" target="_blank">&#9990;</a>
+<footer>
+  <p><a href="https://instagram.com/KAISER-INSTA">Instagram</a><a href="https://wa.me/49DEINENUMMER">WhatsApp</a></p>
+  <p style="margin-top:15px">© 2026 KAISER Fotografie</p>
+</footer>
+<script>
+window.onload=()=>{const l=document.getElementById('loader');l.style.opacity=0;setTimeout(()=>l.remove(),1000)};
+let i=0;const s=document.querySelectorAll('.slide');
+function move(d){s[i].classList.remove('active');i=(i+d+s.length)%s.length;s[i].classList.add('active')}
+setInterval(()=>move(1),6000);
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('show');
+x.target.querySelectorAll('.count').forEach(c=>{let n=+c.dataset.n,v=0,st=n/80;const t=setInterval(()=>{v+=st;if(v>=n){v=n;clearInterval(t)}c.textContent=Math.floor(v).toLocaleString('de')+'+'},20)});
+obs.unobserve(x.target)}}),{threshold:.2});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+function filter(c,b){document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+document.querySelectorAll('.gallery img').forEach(img=>img.style.display=(c=='all'||img.dataset.cat==c)?'block':'none')}
+document.querySelectorAll('.gallery img').forEach(img=>img.onclick=()=>{document.getElementById('lbimg').src=img.src;document.getElementById('lightbox').style.display='flex'});
+</script>
+</body>
+</html>
