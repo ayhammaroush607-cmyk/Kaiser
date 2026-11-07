@@ -24,11 +24,11 @@ nav a{color:#eee;margin-left:25px;text-decoration:none;font-size:.9rem}
 .slide img{width:100%;height:100%;object-fit:cover;filter:brightness(.45)}
 .slide.active img{animation:zoom 7s ease-out forwards}
 @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.15)}}
-.hero{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;z-index:2}
+.hero{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;z-index:2;padding:0 20px}
 .hero h1{font-size:clamp(3rem,10vw,7rem);letter-spacing:15px;animation:up 1.5s ease}
-.hero p{margin:20px 0 40px;font-size:1.2rem;letter-spacing:3px;animation:up 2s ease}
+.hero p{margin:20px 0 40px;font-size:clamp(.8rem,3vw,1.2rem);letter-spacing:3px;animation:up 2s ease}
 @keyframes up{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:none}}
-.arrow{position:absolute;top:50%;transform:translateY(-50%);background:none;border:2px solid #fff;color:#fff;width:55px;height:55px;border-radius:50%;font-size:1.5rem;cursor:pointer;z-index:3}
+.arrow{position:absolute;bottom:40px;background:none;border:2px solid #fff;color:#fff;width:50px;height:50px;border-radius:50%;font-size:1.3rem;cursor:pointer;z-index:3}
 .prev{left:25px}.next{right:25px}
 .btn{background:var(--gold);color:#000;padding:16px 40px;border-radius:40px;text-decoration:none;font-weight:500;box-shadow:0 0 25px rgba(212,175,55,.5)}
 section{padding:100px 8%}
@@ -39,11 +39,8 @@ h2{text-align:center;font-size:2.6rem;margin-bottom:15px}
 .stats{display:flex;justify-content:space-around;flex-wrap:wrap;gap:30px;background:#111;padding:60px 8%}
 .stat{text-align:center}
 .stat h3{font-size:3rem;color:var(--gold)}
-.filters{text-align:center;margin-bottom:30px}
-.filters button{background:none;border:1px solid var(--gold);color:#eee;padding:8px 22px;margin:5px;border-radius:20px}
-.filters button.on{background:var(--gold);color:#000}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-.gallery img{width:100%;height:300px;object-fit:cover;border-radius:8px}
+.gallery img{width:100%;height:340px;object-fit:cover;border-radius:8px;cursor:pointer}
 #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);display:none;justify-content:center;align-items:center;z-index:100}
 #lightbox img{max-width:90%;max-height:85%}
 .reels{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:15px}
@@ -55,11 +52,7 @@ h2{text-align:center;font-size:2.6rem;margin-bottom:15px}
 .price.top{border:2px solid var(--gold)}
 .price .p{font-size:2.6rem;color:var(--gold);margin:15px 0}
 .price li{list-style:none;margin:10px 0;color:#bbb}
-.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
-.review{background:#141414;padding:30px;border-radius:15px;font-style:italic}
-.review b{display:block;margin-top:15px;color:var(--gold);font-style:normal}
 .calendly-inline-widget{min-width:320px;height:700px}
-.wa{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.8rem;text-decoration:none;z-index:60}
 footer{text-align:center;padding:40px;background:#000;color:#777}
 footer a{color:var(--gold);margin:0 10px;text-decoration:none}
 @media(max-width:700px){nav div{display:none}.reel{flex:0 0 85%}}
@@ -69,9 +62,9 @@ footer a{color:var(--gold);margin:0 10px;text-decoration:none}
 <div id="loader"><span>KAISER</span></div>
 <nav id="nav"><b>KAISER</b><div><a href="#portfolio">Portfolio</a><a href="#videos">Videos</a><a href="#preise">Preise</a><a href="#buchen">Buchen</a></div></nav>
 <div class="slider">
-  <div class="slide active"><img src="bild1.jpg" alt=""></div>
-  <div class="slide"><img src="bild2.jpg" alt=""></div>
-  <div class="slide"><img src="bild3.jpg" alt=""></div>
+  <div class="slide active"><img src="bild1.png" alt=""></div>
+  <div class="slide"><img src="bild2.png" alt=""></div>
+  <div class="slide"><img src="bild3.png" alt=""></div>
   <div class="hero">
     <h1>KAISER</h1>
     <p>MOMENTE, DIE FÜR IMMER BLEIBEN</p>
@@ -88,19 +81,10 @@ footer a{color:var(--gold);margin:0 10px;text-decoration:none}
 <section id="portfolio">
   <h2 class="reveal">Portfolio</h2>
   <p class="sub">MEINE ARBEIT</p>
-  <div class="filters">
-    <button class="on" onclick="filter('all',this)">Alle</button>
-    <button onclick="filter('hochzeit',this)">Hochzeit</button>
-    <button onclick="filter('business',this)">Business</button>
-    <button onclick="filter('portrait',this)">Portrait</button>
-  </div>
   <div class="gallery">
-    <img data-cat="hochzeit" src="hochzeit1.jpg" alt="">
-    <img data-cat="hochzeit" src="hochzeit2.jpg" alt="">
-    <img data-cat="business" src="business1.jpg" alt="">
-    <img data-cat="business" src="business2.jpg" alt="">
-    <img data-cat="portrait" src="portrait1.jpg" alt="">
-    <img data-cat="portrait" src="portrait2.jpg" alt="">
+    <img src="bild1.png" alt="">
+    <img src="bild2.png" alt="">
+    <img src="bild3.png" alt="">
   </div>
 </section>
 <div id="lightbox" onclick="this.style.display='none'"><img id="lbimg" src="" alt=""></div>
@@ -125,24 +109,14 @@ footer a{color:var(--gold);margin:0 10px;text-decoration:none}
     <div class="price"><h3>Business</h3><div class="p">ab 299 €</div><ul><li>Fotos für Laden & Social Media</li><li>Nutzungsrechte inklusive</li><li>Schnelle Lieferung</li></ul></div>
   </div>
 </section>
-<section>
-  <h2 class="reveal">Kundenstimmen</h2>
-  <p class="sub">DAS SAGEN MEINE KUNDEN</p>
-  <div class="reviews">
-    <div class="review">„Die schönsten Bilder unseres Lebens!“<b>★★★★★ Sarah & Ali</b></div>
-    <div class="review">„Seit den neuen Fotos läuft unser Laden viel besser.“<b>★★★★★ Café Luna</b></div>
-    <div class="review">„Super entspannt und sehr professionell!“<b>★★★★★ Mehmet K.</b></div>
-  </div>
-</section>
 <section id="buchen">
   <h2 class="reveal">Termin buchen</h2>
   <p class="sub">WÄHLE DEINEN WUNSCHTERMIN</p>
   <div class="calendly-inline-widget" data-url="https://calendly.com/KAISER-NAME"></div>
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </section>
-<a class="wa" href="https://wa.me/49DEINENUMMER" target="_blank">&#9990;</a>
 <footer>
-  <p><a href="https://instagram.com/KAISER-INSTA">Instagram</a><a href="https://wa.me/49DEINENUMMER">WhatsApp</a></p>
+  <p><a href="https://instagram.com/KAISER-INSTA">Instagram</a></p>
   <p style="margin-top:15px">© 2026 KAISER Fotografie</p>
 </footer>
 <script>
@@ -155,8 +129,6 @@ const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.targe
 x.target.querySelectorAll('.count').forEach(c=>{let n=+c.dataset.n,v=0,st=n/80;const t=setInterval(()=>{v+=st;if(v>=n){v=n;clearInterval(t)}c.textContent=Math.floor(v).toLocaleString('de')+'+'},20)});
 obs.unobserve(x.target)}}),{threshold:.2});
 document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
-function filter(c,b){document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
-document.querySelectorAll('.gallery img').forEach(img=>img.style.display=(c=='all'||img.dataset.cat==c)?'block':'none')}
 document.querySelectorAll('.gallery img').forEach(img=>img.onclick=()=>{document.getElementById('lbimg').src=img.src;document.getElementById('lightbox').style.display='flex'});
 </script>
 </body>
