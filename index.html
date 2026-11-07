@@ -46,8 +46,10 @@ h2{text-align:center;font-size:2.6rem;margin-bottom:15px}
 .gallery img{width:100%;height:300px;object-fit:cover;border-radius:8px}
 #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);display:none;justify-content:center;align-items:center;z-index:100}
 #lightbox img{max-width:90%;max-height:85%}
-.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
-.videos iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:12px}
+.reels{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:15px}
+.reel{flex:0 0 320px;scroll-snap-align:center;background:#141414;border-radius:16px;overflow:hidden;border:1px solid #222}
+.reel iframe{width:100%;height:580px;border:none}
+.hint{text-align:center;color:#777;font-size:.85rem;margin-top:10px}
 .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
 .price{background:#141414;padding:40px 30px;border-radius:15px;text-align:center;border:1px solid #222}
 .price.top{border:2px solid var(--gold)}
@@ -60,7 +62,7 @@ h2{text-align:center;font-size:2.6rem;margin-bottom:15px}
 .wa{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.8rem;text-decoration:none;z-index:60}
 footer{text-align:center;padding:40px;background:#000;color:#777}
 footer a{color:var(--gold);margin:0 10px;text-decoration:none}
-@media(max-width:700px){nav div{display:none}}
+@media(max-width:700px){nav div{display:none}.reel{flex:0 0 85%}}
 </style>
 </head>
 <body>
@@ -104,11 +106,15 @@ footer a{color:var(--gold);margin:0 10px;text-decoration:none}
 <div id="lightbox" onclick="this.style.display='none'"><img id="lbimg" src="" alt=""></div>
 <section id="videos">
   <h2 class="reveal">Videos</h2>
-  <p class="sub">HINTER DEN KULISSEN</p>
-  <div class="videos">
-    <iframe src="https://www.youtube.com/embed/VIDEO-ID-1" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/VIDEO-ID-2" allowfullscreen></iframe>
+  <p class="sub">MEINE REELS</p>
+  <div class="reels">
+    <div class="reel"><iframe src="https://www.instagram.com/reel/DQ7mJcpChUS/embed" loading="lazy" allowfullscreen></iframe></div>
+    <div class="reel"><iframe src="https://www.instagram.com/reel/DGO3mBxI4py/embed" loading="lazy" allowfullscreen></iframe></div>
+    <div class="reel"><iframe src="https://www.instagram.com/reel/CyLaEqFIWfg/embed" loading="lazy" allowfullscreen></iframe></div>
+    <div class="reel"><iframe src="https://www.instagram.com/reel/DOOs1_TCrLE/embed" loading="lazy" allowfullscreen></iframe></div>
+    <div class="reel"><iframe src="https://www.instagram.com/reel/DFnU5xEI8Pa/embed" loading="lazy" allowfullscreen></iframe></div>
   </div>
+  <p class="hint">← Wischen für mehr Videos →</p>
 </section>
 <section id="preise">
   <h2 class="reveal">Pakete</h2>
